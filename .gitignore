@@ -1,4 +1,5 @@
 requirements.txt
+requirements
 instance/
 venv/
 instance
@@ -9,3 +10,4 @@ env
 .gitignore
 config.py
 env.py
+__pycache__
