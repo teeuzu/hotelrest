@@ -6,11 +6,23 @@ from resources.site import Site, Sites
 from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
 from sql_alchemy import banco
+from dotenv import load_dotenv
+import os
+
+load_dotenv(dotenv_path='.env')
+
+USER = os.getenv('USER')
+PASSWORD = os.getenv('PASSWORD')
+HOST = os.getenv('HOST')
+PORT = os.getenv('PORT')
+DATABASE = os.getenv('DATABASE')
+JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY'] = 'DontTellAnyone'
+app.config['JWT_SECRET_KEY'] = JWT_SECRET_KEY
 app.config['JWT_BLACKLIST_ENABLED'] = True
 banco.init_app(app)
 

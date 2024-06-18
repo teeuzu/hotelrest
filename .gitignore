@@ -1,3 +1,11 @@
 requirements.txt
 instance/
 venv/
+instance
+venv
+env
+.mypy_cache
+.mypy_cache/
+.gitignore
+config.py
+env.py
