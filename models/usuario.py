@@ -1,9 +1,13 @@
 from sql_alchemy import banco
 from flask import request, url_for
 from requests import post
+from dotenv import load_dotenv
+import os
 
-MAILGUN_DOMAIN = 'sandboxbbdc01ddda4d426cad23c623f557af18.mailgun.org'
-MAILGUN_API_KEY = '153f7547043e8e5ed15aae1be12a34c8-51356527-639b356a'
+load_dotenv(dotenv_path='.env')
+
+MAILGUN_DOMAIN = os.getenv('MAILGUN_DOMAIN')
+MAILGUN_API_KEY = os.getenv('MAILGUN_API_KEY')
 FROM_TITLE = 'No reply'
 FROM_EMAIL = 'no-reply@restapi.com'
 
